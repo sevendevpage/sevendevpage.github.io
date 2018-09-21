@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Карточная игра "Семь"</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="stylesheet" href="/css/reboot.min.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style.min.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="ad-main">
+            <div id="vk_ads_107567"></div>
+        </div>
+        <div id="game-container">
+            <div id="c-avatar" class="avatar"></div>
+            <div id="p-avatar" class="avatar"></div>
+            <div id="deck"></div>
+            <div id="deck-counter">52</div>
+            <div id="c-hand"></div>
+            <div id="p-hand"></div>
+            <div id="target-deck-1">
+                <div class="marker"></div>
+            </div>
+            <div id="target-deck-2">
+                <div class="marker"></div>
+            </div>
+            <div id="take-card-button">
+                <div id="take-card-button-marker"></div>
+            </div>
+            <table id="score-table">
+                <tr>
+                    <th></th>
+                    <th class="p-name"></th>
+                    <th class="c-name">Противник</th>
+                </tr>
+                <tr class="lap1">
+                    <td>1</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="lap2">
+                    <td>2</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="lap3">
+                    <td>3</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="lap4">
+                    <td>4</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="lap5">
+                    <td>5</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="lap6">
+                    <td>6</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="lap7">
+                    <td>7</td>
+                    <td class="p-score">-</td>
+                    <td class="c-score">-</td>
+                </tr>
+                <tr class="total">
+                    <td>Всего:</td>
+                    <td class="p-score-total">0</td>
+                    <td class="c-score-total">0</td>
+                </tr>
+            </table>
+            <div class="stat-button" data-popup-id="stat">Статистика</div>
+            <div id="stat" class="popup">
+                <div class="close-popup-button" data-popup-id="stat"></div>
+                <div class="popup-inner">
+                    <div class="caption">Статистика</div>
+                    <table id="stat-table">
+                        <tr>
+                            <td colspan="2" class="acenter"><b>Общая статистика</b></td>
+                        </tr>
+                        <tr>
+                            <td class="aright" style="width: 50%;">Сыграно игр:</td>
+                            <td class="aleft stat-games-count"  style="width: 50%;"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Побед:</td>
+                            <td class="aleft stat-win"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Поражений:</td>
+                            <td class="aleft stat-lose"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Ничьи:</td>
+                            <td class="aleft stat-draw"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Минимально очков за раунд:</td>
+                            <td class="aleft stat-min-game-score"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Максимально очков за раунд:</td>
+                            <td class="aleft stat-max-game-score"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Минимальная разница очков:</td>
+                            <td class="aleft stat-min-game-score-dif"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Максимальная разница очков:</td>
+                            <td class="aleft stat-max-game-score-dif"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="rating-button" data-popup-id="rating">Рейтинг</div>
+            <div id="rating" class="popup">
+                <div class="close-popup-button" data-popup-id="rating"></div>
+                <div class="popup-inner">
+                    <div class="caption">Рейтинг</div>
+                    <div id="ratind-table-container">
+
+                    </div>
+                </div>
+            </div>
+            <div class="invite-button" id="invite-friend-button2">Пригласить друга</div>
+            <div class="help-button" data-popup-id="help">?</div>
+            <div id="help" class="popup">
+                <div class="close-popup-button" data-popup-id="help"></div>
+                <div class="popup-inner">
+                    <div class="popup-inner-scrollable" id="help-inner-scrollable">
+                        <div class="caption">Правила.</div>
+                        <div class="title">1. Цель игры:</div>
+                        <div class="text">Набрать <b>наименьшее</b> количество очков в сумме за 7 раундов. Очки за каждый раунд начисляются в зависимости от карт, оставшихся в руке на момент окончания раунда.</div>
+                        <div class="text">Раунд считается оконченным когда у одного из противников в руке не останется карт, либо когда потребуется взять карту из пустой колоды.</div>
+                        <div class="title">2. Сброс карт (в Ваш ход):</div>
+                        <div class="text">В ваш ход Вы обязаны положить карты в <b>обе колоды сброса</b>. Карта считается подходящей в колоду сброса если она совпадает по <b>масти</b> или <b>номиналу</b> с верхней картой в колоде сброса.</div>
+                        <div class="text">"Семерка" подходит ко всем картам.</div>
+                        <div class="text">Если вы положили в колоду сброса карту подходящую по номиналу (например двойку на двойку) и в конце Вашего хода у Вас в руке остались карты того же номинала, они будут автоматически перемещены в колоду сброса.</div>
+                        <div class="text">Если у Вас в руке нет подходящей карты в <b>колоду сброса</b>, Вы берете карту из колоды.</div>
+                        <div class="title">3. Подсчет очков в конце раунда:</div>
+                        <div class="text">Каждая карта имеет свою "стоимость":</div>
+                        <div class="text">
+                            <b>Туз</b> - 1 очко<br>
+                            <b>2</b> - <b>10</b> - стоимость соответствует номиналу<br>
+                            <b>Валет</b> - 11 очков<br>
+                            <b>Дама</b> - 12 очков<br>
+                            <b>Король</b> - 13 очков
+                        </div>
+                        <div class="text">Очки за раунд это сумма всех карт оставшихся в руке на момент окончания раунда.</div>
+                        <div class="text"></div>
+                    </div>
+                    <div class="scroll-bar" id="help-scroll-bar">
+                        <div class="scroll-bar-position" id="help-scroll-bar-position" style="top:0;"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="game-over" class="popup">
+                <div class="popup-inner">
+                    <div class="caption">Результат</div>
+                    <table id="result-table">
+                        <tr>
+                            <td colspan="2" class="acenter"><b>Статистика за игру</b></td>
+                            <td colspan="2" class="acenter"><b>Общая статистика</b></td>
+                        </tr>
+                        <tr>
+                            <td class="aright" style="width: 190px;">Очков набрано:</td>
+                            <td class="aleft stat-p-score" style="width: 50px;"></td>
+                            <td class="aright" style="width: 100px;">Сыграно игр:</td>
+                            <td class="aleft stat-games-count"  style="width: 70px;"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Разница очков:</td>
+                            <td class="aleft stat-dif"></td>
+                            <td class="aright">Побед:</td>
+                            <td class="aleft stat-win"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Карт сброшено:</td>
+                            <td class="aleft stat-p-cards-throw"></td>
+                            <td class="aright">Поражений:</td>
+                            <td class="aleft stat-lose"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Очков сброшено:</td>
+                            <td class="aleft stat-p-score-throw"></td>
+                            <td class="aright">Ничьи:</td>
+                            <td class="aleft stat-draw"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Противник сбросил катр:</td>
+                            <td class="aleft stat-c-cards-throw"></td>
+                            <td colspan="2" rowspan="5"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Противник сбросил очков:</td>
+                            <td class="aleft stat-c-score-throw"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Минимально очков за раунд:</td>
+                            <td class="aleft stat-min-round-score"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">Максимально очков за раунд:</td>
+                            <td class="aleft stat-max-round-score"></td>
+                        </tr>
+                        <tr>
+                            <td class="aright">В среднем за раунд очков:</td>
+                            <td class="aleft stat-average-round-score"></td>
+                        </tr>
+                    </table>
+                    <div class="button-container">
+                        <div class="button" id="invite-friend-button">Пригласить друга</div>
+                        <div class="button" id="start-new-game-button">НОВАЯ ИГРА</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ad-main">
+            <div id="vk_ads_107568"></div>
+        </div>
+        <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+        <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="/js/playerioclient.minified.js"></script>
+        <script src="/js/helper.min.js" type="text/javascript"></script>
+        <script src="/js/card.min.js" type="text/javascript"></script>
+        <script src="/js/game.min.js" type="text/javascript"></script>
+        <script src="/js/ad.js" type="text/javascript"></script>
+    </body>
+</html>
